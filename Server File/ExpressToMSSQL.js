@@ -121,13 +121,12 @@ function displayAllContacts(request,response)
  
 app.get('/getAllContact',displayAllContacts);
 
-function getContactByName(request, response){
+function getContactByID(request, response){
     var id = request.query.contactid;
-    //Parameterqized SQL
     mysqlconnection.query('select * from Contact where contactid = ?', [id], processResults);
     response.send(queryresults);
 }
-app.get('/getContactByName', getContactByName);
+app.get('/getContactByID', getContactByID);
 
 var statusMessage = "";
 function checkInsertStatus(error){

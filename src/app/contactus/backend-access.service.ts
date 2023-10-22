@@ -1,33 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
- 
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class BackendAccessService {
-  title = 'reactiveforms';
-  userList : any = [];
-  data : any ;
-  expresponse : string = "";
-  constructor (private http : HttpClient) {
-   
+  private baseUrl = 'http://localhost:9901';
+
+  constructor(private http: HttpClient) {}
+
+  addContact(formData: NgForm): Observable<any> {
+    return this.http.post(`${this.baseUrl}/insertContact`, formData.value);
   }
-  addUser(form : NgForm){
-    //var user : Data = {
-    // uname : form.value.userid,
-    // pwd : form.value.password,
-    // emailid : form.value.emailid
-    //}
-    this.http.post('http://localhost:9901/insert', form.value ).subscribe((response) => {
-      this.expresponse = response.toString();
-      return this.expresponse;
-    })
+
+  getAllContacts(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/getAllContact`);
   }
-  getAllUsers(){
-    this.http.get('http://localhost:9901/getAll').subscribe((response) => {
-      this.userList = response;
-      return this.userList;
-    })
+
+  updateContact(formData: NgForm): Observable<any> {
+    return this.http.put(`${this.baseUrl}/updateContact`, formData.value);
+  }
+
+  deleteContact(formData: NgForm): Observable<any> {
+    return this.http.post(`${this.baseUrl}/deleteContact`, formData.value);
+  }
+
+  searchContactByID(contactId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/getContactByID?contactid=${contactId}`);
   }
 }

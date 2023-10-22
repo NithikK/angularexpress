@@ -1,4 +1,4 @@
-<h1>Template Driven Forms</h1>
+<h1>User Form</h1>
 <h3>Enter User Data</h3>
 <form name="TemplateForm" #userData="ngForm" (ngSubmit)='addUser(userData)'>
   User ID : <input type="text" name="userid" ngModel required /><br><br>
@@ -10,7 +10,7 @@
   <input type="button" value="Delete User" (click)="deleteUser(userData)" />&nbsp;&nbsp;
 </form><br>
 <label>{{this.expresponse}}</label><br><br>
-<form name="TemplateForm2" #userData2="ngForm" (ngSubmit)='search(userData2)'>
+<form name="TemplateForm2" #userData2="ngForm" (ngSubmit)='searchUser(userData2)'>
   Enter User ID : <input type="text" name="uid" ngModel required /><br><br>
   <input type="submit" value="Search" [disabled]="!userData2.valid" />
 

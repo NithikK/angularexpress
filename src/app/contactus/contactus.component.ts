@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-import Data from './data';
 import { NgForm } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { BackendAccessService } from '././backend-access.service';//imported in app so since its inside a folder inside app give like this
-
+import { BackendAccessService } from './backend-access.service';
 
 @Component({
   selector: 'app-contactus',
@@ -11,36 +8,47 @@ import { BackendAccessService } from '././backend-access.service';//imported in 
   styleUrls: ['./contactus.component.css']
 })
 export class ContactusComponent {
-  contactList : any = [];
-  data : any ;
-  expresponse : string = "";
-  constructor (private http : HttpClient, private baccess: BackendAccessService) {
-   
-  }
-  addContact(form : NgForm){
-    this.http.post('http://localhost:9901/insertContact', form.value ).subscribe((response) => {
+  contactList: any = [];
+  expresponse: string = "";
+
+  constructor(private backendService: BackendAccessService) {}
+
+  addContact(form: NgForm): void {
+    this.backendService.addContact(form).subscribe(response => {
       this.expresponse = response.toString();
-    })
+      this.getAllContacts();
+    });
   }
-  getAllContacts(){
-    this.http.get('http://localhost:9901/getAllContact').subscribe((response) => {
-      this.contactList = response;
-    })
+
+  getAllContacts(): void {
+    this.backendService.getAllContacts().subscribe(contacts => {
+      this.contactList = contacts;
+    });
   }
-  updateContact(form : NgForm){
-    this.http.put('http://localhost:9901/updateContact', form.value ).subscribe((response) => {
+
+  updateContact(form: NgForm): void {
+    this.backendService.updateContact(form).subscribe(response => {
       this.expresponse = response.toString();
-    })
+      this.getAllContacts();
+    });
   }
-  deleteContact(form : NgForm){
-    this.http.post('http://localhost:9901/deleteContact', form.value ).subscribe((response) => {
+
+  deleteContact(form: NgForm): void {
+    this.backendService.deleteContact(form).subscribe(response => {
       this.expresponse = response.toString();
-    })
+      this.getAllContacts();
+    });
   }
-  searchContact(form : NgForm){
-    this.contactList = [];
-    this.http.get('http://localhost:9901/getContactByName', form.value).subscribe((response) => {
-      this.contactList = response;
-    })
+
+  searchContact(form: NgForm): void {
+    const contactId = form.value.contactid;
+    if (contactId) {
+      this.backendService.searchContactByID(contactId).subscribe(contact => {
+        this.contactList = contact;
+        console.log(this.contactList);
+      });
+    } else {
+      this.getAllContacts();
+    }
   }
 }

@@ -1,5 +1,5 @@
-<h1>Template Driven Forms</h1>
-<h3>Enter User Data</h3>
+<h1>Contact Us Form</h1>
+<h3>Enter Contact Data</h3>
 <form name="TemplateForm" #contactData="ngForm" (ngSubmit)='addContact(contactData)'>
   Contact ID : <input type="number" name="contactid" ngModel /><br><br>
   First Name : <input type="text" name="firstName" ngModel required /><br><br>
@@ -12,6 +12,12 @@
   <input type="button" value="Delete" (click)='deleteContact(contactData)' />&nbsp;&nbsp;
   <input type="button" value="GetAll" (click)='getAllContacts()' />
 </form><br>
+<label>{{this.expresponse}}</label><br><br>
+<form name="TemplateForm2" #contactData2="ngForm" (ngSubmit)='searchContact(contactData2)'>
+  Enter Contact ID : <input type="number" name="contactid" ngModel required /><br><br>
+  <input type="submit" value="Search" [disabled]="!contactData2.valid" />
+
+</form>
 <table>
   <tr>
     <th>Contact ID</th>
