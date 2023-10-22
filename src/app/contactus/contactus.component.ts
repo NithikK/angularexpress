@@ -42,12 +42,8 @@ export class ContactusComponent {
 
   searchContact(form: NgForm): void {
     const contactId = form.value.contactid;
-    if (contactId) {
-      this.backendService.searchContactByID(contactId).subscribe(contact => {
-        this.contactList = contact;
-      });
-    } else {
-      this.getAllContacts();
-    }
+    this.backendService.searchContactByID(contactId).subscribe(contact => {
+      this.contactList = contact;
+    });
   }
 }
