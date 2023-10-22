@@ -45,7 +45,6 @@ export class ContactusComponent {
     if (contactId) {
       this.backendService.searchContactByID(contactId).subscribe(contact => {
         this.contactList = contact;
-        console.log(this.contactList);
       });
     } else {
       this.getAllContacts();
