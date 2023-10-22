@@ -1,0 +1,25 @@
+<h1>Template Driven Forms</h1>
+<h3>Enter User Data</h3>
+<form name="TemplateForm" #userData="ngForm" (ngSubmit)='addUser(userData)'>
+  User ID : <input type="text" name="userid" ngModel required /><br><br>
+  Password : <input type="password" name="password" ngModel required /><br><br>
+  Email ID : <input type="text" name="emailid" ngModel required /><br><br>
+  <input type="submit" value="Add User" [disabled]="!userData.valid" />&nbsp;&nbsp;
+  <input type="button" value="Get User" (click)="getAllUsers()" />&nbsp;&nbsp;
+  <input type="button" value="Modify User" (click)="updateUser(userData)" />&nbsp;&nbsp;
+  <input type="button" value="Delete User" (click)="deleteUser(userData)" />&nbsp;&nbsp;
+</form><br>
+<label>{{this.expresponse}}</label><br><br>
+<form name="TemplateForm2" #userData2="ngForm" (ngSubmit)='search(userData2)'>
+  Enter User ID : <input type="text" name="uid" ngModel required /><br><br>
+  <input type="submit" value="Search" [disabled]="!userData2.valid" />
+
+</form>
+<table>
+  <tr>
+    <th>User Name</th>
+    <th>Password</th>
+    <th>Email ID</th>
+  </tr>
+  <tr *ngFor="let user of userList"><td>{{user.userid}}</td><td>{{user.password}}</td><td>{{user.emailid}}</td></tr>
+</table>
