@@ -4,9 +4,9 @@ import { NgForm } from '@angular/forms';
 import Data from './data';
 
 
-function count(x: number): string {
+function count(length: number): string {
   var hide = "";
-  for(var i = 0; i <= x; i++) {
+  for(var i = 0; i <= length; i++) {
       hide += "*";
   }
   return hide;
