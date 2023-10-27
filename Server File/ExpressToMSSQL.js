@@ -172,3 +172,12 @@ function deleteContact(request, response){
     response.send(JSON.stringify(statusMessage));
 }
 app.post('/deleteContact', bparserInit, deleteContact);
+
+//----------------------------------------------------------------------
+//                                   Login 
+//----------------------------------------------------------------------
+function loginUser(request, response){
+    mysqlconnection.query('select * from logindetails', processResults);
+    response.send(queryresults);
+}
+app.get('/validateLogin', loginUser);
