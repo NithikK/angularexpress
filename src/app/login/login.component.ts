@@ -15,18 +15,21 @@ interface User {
 export class LoginComponent {
   userList: User[] = [];
   expresponse: string = '';
+  isLoading: boolean=false;
   constructor(private backendService: BackendAccessService, private router: Router, private authService: AuthService) {}
   login(form : NgForm): void {
+    this.isLoading=true;
     this.backendService.login().subscribe(users => {
       this.userList = users;
 
       const user = this.userList.find(u => u.UserID === form.value.UserName && u.Password === form.value.password);
       if (user) {
         this.authService.login();
-        this.router.navigate(['/']);
+        this.router.navigate(['/navbar']);
       } else {
         window.alert('UserName or Password Incorrect...');
       }
+      this.isLoading=false;
     });
   }
 }
