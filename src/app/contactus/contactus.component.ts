@@ -18,13 +18,13 @@ export class ContactusComponent {
     this.backendService.addContact(form).subscribe(response => {
       this.expresponse = response.toString();
       this.getAllContacts();
-      this.showResult = true;
     });
   }
 
   getAllContacts(): void {
     this.backendService.getAllContacts().subscribe(contacts => {
       this.contactList = contacts;
+      this.showResult = true;
     });
   }
 
