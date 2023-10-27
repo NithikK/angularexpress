@@ -39,24 +39,24 @@ export class HomeComponent {
     this.backendService.addUser(form).subscribe(response => {
       this.expresponse = response.toString();
       this.getAllUsers();
+      this.clear(form);
     });
-    this.clear(form);
   }
 
   updateUser(form: NgForm): void {
     this.backendService.updateUser(form).subscribe(response => {
       this.expresponse = response.toString();
       this.getAllUsers();
+      this.clear(form);
     });
-    this.clear(form);
   }
 
   deleteUser(form: NgForm): void {
     this.backendService.deleteUser(form).subscribe(response => {
       this.expresponse = response.toString();
       this.getAllUsers();
+      this.clear(form);
     });
-    this.clear(form);
   }
 
   searchUser(form: NgForm): void {
@@ -67,8 +67,8 @@ export class HomeComponent {
         user.password = count(user.password.length);
       });
       this.showResult = true;
+      this.clear(form);
     });
-    this.clear(form);
   }
   
   clear(form: NgForm){
