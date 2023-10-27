@@ -19,6 +19,7 @@ export class ContactusComponent {
       this.expresponse = response.toString();
       this.getAllContacts();
     });
+    this.clear(form);
   }
 
   getAllContacts(): void {
@@ -33,6 +34,7 @@ export class ContactusComponent {
       this.expresponse = response.toString();
       this.getAllContacts();
     });
+    this.clear(form);
   }
 
   deleteContact(form: NgForm): void {
@@ -40,6 +42,7 @@ export class ContactusComponent {
       this.expresponse = response.toString();
       this.getAllContacts();
     });
+    this.clear(form);
   }
 
   searchContact(form: NgForm): void {
@@ -48,5 +51,10 @@ export class ContactusComponent {
       this.contactList = contact;
       this.showResult = true;
     });
+    this.clear(form);
+  }
+
+  clear(form: NgForm){
+    form.reset();
   }
 }

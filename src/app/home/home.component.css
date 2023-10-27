@@ -1,15 +1,20 @@
 .result {
     border-collapse: collapse;
-}
-
-.result th, .result td {
+    width: 100%;
+  }
+  
+  .result th, .result td {
     border: 1px solid black;
-}
-.result > table tr, .result > table th, .result > table td {
-    border: 2px solid white;
+    padding: 8px;
+    text-align: left;
     transition: background-color 0.3s ease;
-}
+  }
 
-.result > table tr:hover {
+  .result th{
+    text-align: center;
+  }
+  
+  .result tr:hover {
     background-color: rgba(255, 255, 255, 0.1);
-}
+  }
+  

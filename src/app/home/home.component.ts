@@ -40,6 +40,7 @@ export class HomeComponent {
       this.expresponse = response.toString();
       this.getAllUsers();
     });
+    this.clear(form);
   }
 
   updateUser(form: NgForm): void {
@@ -47,6 +48,7 @@ export class HomeComponent {
       this.expresponse = response.toString();
       this.getAllUsers();
     });
+    this.clear(form);
   }
 
   deleteUser(form: NgForm): void {
@@ -54,6 +56,7 @@ export class HomeComponent {
       this.expresponse = response.toString();
       this.getAllUsers();
     });
+    this.clear(form);
   }
 
   searchUser(form: NgForm): void {
@@ -65,5 +68,10 @@ export class HomeComponent {
       });
       this.showResult = true;
     });
+    this.clear(form);
+  }
+  
+  clear(form: NgForm){
+    form.reset();
   }
 }
