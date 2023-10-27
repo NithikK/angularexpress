@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BackendAccessService } from './backend-access.service';
 import { NgForm } from '@angular/forms';
 import Data from './data';
@@ -17,16 +17,12 @@ function count(length: number): string {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   userList: Data[] = [];
   expresponse: string = '';
   showResult: boolean = false;
 
   constructor(private backendService: BackendAccessService) {}
-
-  ngOnInit(): void {
-    this.getAllUsers();
-  }
 
   getAllUsers(): void {
     this.backendService.getAllUsers().subscribe(users => {
