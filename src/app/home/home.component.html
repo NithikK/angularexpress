@@ -19,7 +19,7 @@
     <td colspan="2"><input type="submit" value="Search" [disabled]="!userData2.valid" /></td></tr>
   </table>
 </form><br>
-<table class="result">
+<table class="result" *ngIf="showResult">
   <tr>
     <th>User Name</th>
     <th>Password</th>

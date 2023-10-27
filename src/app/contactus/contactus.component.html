@@ -22,7 +22,7 @@
     <td><input type="submit" value="Search" [disabled]="!contactData2.valid" /></td></tr>
   </table>
 </form><br>
-<table class="result">
+<table class="result" *ngIf="showResult">
   <tr>
     <th>Contact ID</th>
     <th>First Name</th>

@@ -20,6 +20,7 @@ function count(length: number): string {
 export class HomeComponent implements OnInit {
   userList: Data[] = [];
   expresponse: string = '';
+  showResult: boolean = false;
 
   constructor(private backendService: BackendAccessService) {}
 
@@ -33,6 +34,7 @@ export class HomeComponent implements OnInit {
       this.userList.forEach(user => {
         user.password = count(user.password.length);
       });
+      this.showResult = true;
     });
   }
   
@@ -62,6 +64,10 @@ export class HomeComponent implements OnInit {
     const userId = form.value.uid;
     this.backendService.searchUser(userId).subscribe(users => {
       this.userList = users;
+      this.userList.forEach(user => {
+        user.password = count(user.password.length);
+      });
+      this.showResult = true;
     });
   }
 }

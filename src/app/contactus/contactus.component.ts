@@ -10,6 +10,7 @@ import { BackendAccessService } from './backend-access.service';
 export class ContactusComponent {
   contactList: any = [];
   expresponse: string = "";
+  showResult: boolean = false;
 
   constructor(private backendService: BackendAccessService) {}
 
@@ -17,6 +18,7 @@ export class ContactusComponent {
     this.backendService.addContact(form).subscribe(response => {
       this.expresponse = response.toString();
       this.getAllContacts();
+      this.showResult = true;
     });
   }
 
@@ -44,6 +46,7 @@ export class ContactusComponent {
     const contactId = form.value.contactid;
     this.backendService.searchContactByID(contactId).subscribe(contact => {
       this.contactList = contact;
+      this.showResult = true;
     });
   }
 }
