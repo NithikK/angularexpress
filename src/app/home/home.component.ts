@@ -1,6 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendAccessService } from './backend-access.service';
 import { NgForm } from '@angular/forms';
+import Data from './data';
+
+
+function count(x: number): string {
+  var hide = "";
+  for(var i = 0; i <= x; i++) {
+      hide += "*";
+  }
+  return hide;
+}
 
 @Component({
   selector: 'app-home',
@@ -8,7 +18,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  userList: any = [];
+  userList: Data[] = [];
   expresponse: string = '';
 
   constructor(private backendService: BackendAccessService) {}
@@ -20,8 +30,12 @@ export class HomeComponent implements OnInit {
   getAllUsers(): void {
     this.backendService.getAllUsers().subscribe(users => {
       this.userList = users;
+      this.userList.forEach(user => {
+        user.password = count(user.password.length);
+      });
     });
   }
+  
 
   addUser(form: NgForm): void {
     this.backendService.addUser(form).subscribe(response => {
