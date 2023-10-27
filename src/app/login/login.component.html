@@ -5,12 +5,12 @@
     </video>
     <div class="center-container">
       <div class="loginuser">
-          <h1>Login</h1>
           <form name="LoginForm" #loginData="ngForm" (ngSubmit)='login(loginData)'>
               <table>
-                  <tr><th>UserName</th><th> : </th><td><input type="text" name="UserName" placeholder="Enter Your UserName"  ngModel required max="30" min="5"/><br></td></tr>
-                  <tr><th>Password</th><th> : </th><td><input type="password" name="password"  ngModel required /><br></td></tr>
-                  <tr><th colspan="3"><input type="submit" value="Login" [disabled]="!loginData.valid"/><br></th></tr>
+                <tr><th colspan="3" style="font-size: 30px;">Login</th></tr>
+                <tr><th>UserName</th><th> : </th><td><input type="text" name="UserName" placeholder="Enter Your UserName"  ngModel required max="30" min="5"/><br></td></tr>
+                <tr><th>Password</th><th> : </th><td><input type="password" name="password"  ngModel required /><br></td></tr>
+                <tr><th colspan="3"><input type="submit" value="Login" [disabled]="!loginData.valid"/><br></th></tr>
               </table>
           </form>
       </div>
