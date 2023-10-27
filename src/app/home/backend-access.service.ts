@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,10 @@ export class BackendAccessService {
   }
 
   getAllUsers(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/getAll`);
+    return this.http.get<any[]>(`${this.baseUrl}/getAll`)
+      .pipe(
+        map(users => users.filter(user => user !== '' && user !== ''))
+      );
   }
 
   updateUser(formData: NgForm): Observable<any> {
