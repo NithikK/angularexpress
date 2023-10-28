@@ -10,8 +10,6 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -23,7 +21,6 @@ import { environment } from '../environments/environment';
     LoginComponent
   ],
   imports: [
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserModule,
     AppRoutingModule,
     FormsModule,

@@ -51,7 +51,6 @@ export class ContactusComponent {
       this.contactList = contact;
       this.showResult = true;
     });
-    this.clear(form);
   }
 
   clear(form: NgForm){
