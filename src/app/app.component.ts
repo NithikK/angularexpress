@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BackendAccessService } from './login/backend-access.service';
 import { Router } from '@angular/router';
@@ -12,5 +12,10 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'reactiveforms';
-  
+  constructor(private router: Router) {}
+
+  @HostListener('window:beforeunload', ['$event'])
+  unloadHandler(event: Event) {
+    this.router.navigate(['']);
+  }
 }

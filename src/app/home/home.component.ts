@@ -3,7 +3,6 @@ import { BackendAccessService } from './backend-access.service';
 import { NgForm } from '@angular/forms';
 import Data from './data';
 
-
 function count(length: number): string {
   var hide = "";
   for(var i = 0; i <= length; i++) {
@@ -28,6 +27,7 @@ export class HomeComponent {
     this.backendService.getAllUsers().subscribe(users => {
       this.userList = users;
       this.userList.forEach(user => {
+        user.hidden = user.password;
         user.password = count(user.password.length);
       });
       this.showResult = true;
@@ -64,14 +64,23 @@ export class HomeComponent {
     this.backendService.searchUser(userId).subscribe(users => {
       this.userList = users;
       this.userList.forEach(user => {
+        user.hidden = user.password;
         user.password = count(user.password.length);
       });
       this.showResult = true;
-      this.clear(form);
     });
   }
   
   clear(form: NgForm){
     form.reset();
+  }
+  Details(user : Data) {
+    return function() {
+      window.alert("UserId: " + user.userid + "\nPassword: " + user.hidden + "\nEmailID: " + user.emailid);
+    };
+  }
+  showUserDetails(user: Data) {
+    const detailsFunction = this.Details(user);
+    detailsFunction();
   }
 }
