@@ -46,4 +46,23 @@ table{
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-  }
+}
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 20px;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #328f4f;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.button:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+}

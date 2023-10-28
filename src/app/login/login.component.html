@@ -1,6 +1,7 @@
+<meta http-equiv="Cache-control" content="public">
 <body>
-    <video autoplay loop muted>
-        <source src="assets/video/rain.mp4" type="video/mp4">
+    <video autoplay loop muted playsinline poster="assets/video/ly4.gif">
+        <source src="assets/video/ly4.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
     <div class="center-container">
@@ -9,8 +10,8 @@
               <table>
                 <tr><th colspan="2" style="font-size: 30px;">Login</th></tr>
                 <tr><th>UserName : </th><td><input type="text" name="UserName" placeholder="Enter Your UserName"  ngModel required max="30" min="5"/></td></tr>
-                <tr><th>Password : </th><td><input type="password" name="password"  placeholder="password" ngModel required /></td></tr>
-                <tr><td colspan="2"><input type="submit" value="Login" [disabled]="!loginData.valid"/></td></tr>
+                <tr><th>Password : </th><td><input type="password" name="password"  placeholder="password" ngModel required /></td></tr><tr><td>&nbsp;</td></tr>
+                <tr><td colspan="2"><input type="submit" class="button" value="Login" [disabled]="!loginData.valid"/></td></tr>
               </table>
           </form>
       </div>
