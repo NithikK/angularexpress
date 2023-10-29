@@ -1,5 +1,5 @@
 body {
-    color: #333;
+    color: white;
     line-height: 1.5;
   }
   
@@ -9,7 +9,7 @@ body {
     padding: 20px;
   }
   
-  h1 {
+  h3 {
     font-size: 36px;
     text-align: center;
     margin-bottom: 30px;
@@ -36,9 +36,5 @@ body {
   @media (max-width: 600px) {
     .container {
       padding: 10px;
-    }
-    
-    h1 {
-      font-size: 24px;
     }
   }

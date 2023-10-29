@@ -1,26 +1,85 @@
 .result {
   border-collapse: collapse;
   width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
-.result th, .result td {
-  border: 1px solid black;
+.result th {
+  padding: 8px;
+  font-size: 14px;
+}
+
+.result td {
+  border: 1px solid #333;
   padding: 8px;
   text-align: left;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
 }
 
-.result th{
+.result th {
+  background: #333;
+  color: #fff;
+  font-weight: bold;
   text-align: center;
+}
+
+.result td {
+  border-bottom: 1px solid #333;
+}
+
+.result tr {
+  color: #333;
 }
 
 .result tr:hover {
   background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: background-color 0.3s ease;
 }
-.result th, .result td {
+
+.result th,
+.result td {
   transition: all 0.3s ease;
 }
 
-.result th:hover, .result td:hover {
+.result th:hover,
+.result td:hover {
   transform: scale(1.05);
+}
+
+/* Button styles */
+
+.button {
+  display: inline-block;
+  /*margin-top: 20px;*/
+  color: white;
+  padding: 10px 20px;
+  background-color: #333;
+  border: 2px solid #000;
+  border-radius: 5px;
+  transition: opacity 0.3s;
+}
+
+/* Disabled button */
+
+.button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Hover effects */
+
+.button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
+}
+
+hr {
+  border-color: #333;
+}
+
+table {
+  color: white;
 }

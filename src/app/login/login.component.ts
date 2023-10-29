@@ -32,7 +32,6 @@ export class LoginComponent {
           this.router.navigate(['/navbar']);
         } else {
           window.alert('UserName or Password Incorrect...');
-          this.isLoading=false;
         }
       }
     });

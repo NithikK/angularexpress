@@ -7,13 +7,22 @@
     <div class="center-container">
       <div class="loginuser">
           <form name="LoginForm" #loginData="ngForm" (ngSubmit)='login(loginData)'>
-              <table>
-                <tr><th colspan="2" style="font-size: 30px;">Login</th></tr>
-                <tr><th>UserName : </th><td><input type="text" name="UserName" placeholder="Enter Your UserName"  ngModel required max="30" min="5"/></td></tr>
-                <tr><th>Password : </th><td><input type="password" name="password"  placeholder="password" ngModel required /></td></tr><tr><td>&nbsp;</td></tr>
-                <tr><td colspan="2"><input type="submit" class="button" value="Login" [disabled]="!loginData.valid"/></td></tr>
+                <table>
+                  <fieldset style="border-color: #333;">
+                    <legend style="text-align: left; color: #333; font-weight: bold;">|&nbsp;<img src="assets/image/login.png" width="30px" height="30px" style="vertical-align: middle;"/>&nbsp;Login&nbsp;|</legend>
+                  <tr><td>&nbsp;</td></tr>
+                <tr style="text-align: left">
+                  <td>Username&nbsp;</td>
+                  <td><input type="text" name="UserName" placeholder="Enter Username"  ngModel required max="30" min="5"/></td></tr>
+                <tr style="text-align: left">
+                  <td>Password&nbsp;</td>
+                  <td><input type="password" name="password"  placeholder="Enter Password" ngModel required /></td></tr><tr><td>&nbsp;</td></tr>
+                <tr align="right"><td colspan="2">
+                  <input type="submit" class="button" value="Login" [disabled]="!loginData.valid"/></td></tr>
+              </fieldset>
+
               </table>
-          </form>
+            </form>
       </div>
     </div>
   </body>

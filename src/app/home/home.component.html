@@ -1,29 +1,56 @@
 <app-navbar></app-navbar>
-<h1>User Form</h1>
-<h3>Enter User Data</h3>
+<h3>Manage User Registrations</h3>
 <form name="TemplateForm" #userData="ngForm" (ngSubmit)='addUser(userData)'>
   <table>
-    <tr style="text-align: left;"><th>User ID : </th><td colspan="3"><input type="text" name="userid" ngModel required /></td></tr><tr>
-    <tr style="text-align: left;"><th>Password : </th><td colspan="3"><input type="password" name="password" ngModel required /></td></tr>
-    <tr style="text-align: left;"><th>Email ID : </th><td colspan="3"><input type="text" name="emailid" ngModel required /></td></tr><tr><td>&nbsp;</td></tr>
-    <tr><td style="text-align: right;"><input type="submit" class="form-button" value="Add User" [disabled]="!userData.valid" /></td>
-      <td><input type="button" class="form-button" value="Modify User" (click)="updateUser(userData)" [disabled]="!userData.valid" /></td>
-      <td><input type="button" class="form-button" value="Delete User" (click)="deleteUser(userData)" /></td>
-      <td><input type="button" class="form-button" value="Get User" (click)="getAllUsers()" /></td></tr>
+    <tr style="text-align: left;">
+      <td>Username: </td>
+      <td colspan="6"><input type="text" name="userid" ngModel required /></td>
+    </tr>
+    <tr style="text-align: left;">
+      <td>Password: </td>
+      <td colspan="6"><input type="password" name="password" ngModel required /></td>
+    </tr>
+    <tr style="text-align: left;">
+      <td>Email ID: </td>
+      <td colspan="6"><input type="text" name="emailid" ngModel required /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="text-align: right;"><input type="submit" class="button" value="Add User"
+          [disabled]="!userData.valid" /></td><td>&nbsp;</td>
+      <td><input type="button" class="button" value="Modify User" (click)="updateUser(userData)"
+          [disabled]="!userData.valid" /></td><td>&nbsp;</td>
+      <td><input type="button" class="button" value="Delete User" (click)="deleteUser(userData)" /></td><td>&nbsp;</td>
+      <td><input type="button" class="button" value="Get Users" (click)="getAllUsers()" /></td>
+    </tr>
   </table>
 </form><br>
-<form name="TemplateForm2" #userData2="ngForm" (ngSubmit)='searchUser(userData2)'>
+<hr />
+<form name="TemplateForm2" #userData2="ngForm" (ngSubmit)='searchUser(userData2)' *ngIf="showResult">
   <table>
-    <tr><th>Enter User ID : </th><td><input type="text" name="uid" ngModel required /></td>
-    <td colspan="2"><input type="submit" value="Search" [disabled]="!userData2.valid" /></td></tr>
+    <tr>
+      <td>Filter by Username: </td>
+      <td><input type="text" name="uid" ngModel required /></td>
+      <td><input type="submit" class="button" value="Filter" [disabled]="!userData2.valid" /></td>
+    </tr>
+
   </table>
 </form><br>
 <table class="result" *ngIf="showResult">
-  <tr style="background-color: rgb(162, 101, 78); color: rgb(75, 3, 3);">
-    <th>User Name</th>
+  <tr>
+    <th>Username</th>
     <th>Password</th>
     <th>Email ID</th>
     <th></th>
   </tr>
-  <tr *ngFor="let user of userList"><td>{{user.userid}}</td><td>{{user.password}}</td><td>{{user.emailid}}</td><td><button type='button' (click)="showUserDetails(user)">Details</button></td></tr>
+  <tr *ngFor="let user of userList" style="vertical-align: middle;">
+    <td>{{user.userid}}</td>
+    <td>{{user.password}}</td>
+    <td>{{user.emailid}}</td>
+    <td style="text-align: center; vertical-align: bottom;"><button type='button' class="button"
+        (click)="showUserDetails(user)">View
+        Details</button></td>
+  </tr>
 </table>
